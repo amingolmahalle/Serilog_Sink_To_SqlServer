@@ -11,7 +11,6 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
         StringBuilder _sb = new StringBuilder();
         private readonly SqlConnection _conn = new SqlConnection();
         private int _commandCount;
-
         #endregion
 
         #region Proeprty
