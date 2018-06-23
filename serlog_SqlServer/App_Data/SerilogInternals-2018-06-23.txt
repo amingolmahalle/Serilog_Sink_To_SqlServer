@@ -1,0 +1,80 @@
+2018-06-23T09:24:09.9850648Z Unable to write log event to the database due to following error: Type 'Serilog.Events.ScalarValue' cannot be serialized. Consider marking it with the DataContractAttribute attribute, and marking all of its members you want serialized with the DataMemberAttribute attribute.  If the type is a collection, consider marking it with the CollectionDataContractAttribute.  See the Microsoft .NET Framework documentation for other supported types.
+2018-06-23T09:24:10.6517173Z Exception while emitting periodic batch from serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink: System.Runtime.Serialization.InvalidDataContractException: Type 'Serilog.Events.ScalarValue' cannot be serialized. Consider marking it with the DataContractAttribute attribute, and marking all of its members you want serialized with the DataMemberAttribute attribute.  If the type is a collection, consider marking it with the CollectionDataContractAttribute.  See the Microsoft .NET Framework documentation for other supported types.
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.ThrowInvalidDataContractException(String message, Type type)
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.CreateDataContract(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.GetDataContractSkipValidation(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   at System.Runtime.Serialization.DataContractSerializer.get_RootContract()
+   at System.Runtime.Serialization.DataContractSerializer.InternalWriteStartObject(XmlWriterDelegator writer, Object graph)
+   at System.Runtime.Serialization.DataContractSerializer.InternalWriteObject(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObjectHandleExceptions(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObject(XmlDictionaryWriter writer, Object graph)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObject(Stream stream, Object graph)
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.Serialize(Object obj) in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 106
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.<>c.<EmitBatchAsync>b__10_4(KeyValuePair`2 x) in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 66
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector)
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.<EmitBatchAsync>d__10.MoveNext() in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 80
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.<OnTick>d__16.MoveNext()
+2018-06-23T09:24:26.5493397Z Unable to write log event to the database due to following error: Type 'Serilog.Events.ScalarValue' cannot be serialized. Consider marking it with the DataContractAttribute attribute, and marking all of its members you want serialized with the DataMemberAttribute attribute.  If the type is a collection, consider marking it with the CollectionDataContractAttribute.  See the Microsoft .NET Framework documentation for other supported types.
+2018-06-23T09:24:26.8281222Z Exception while emitting periodic batch from serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink: System.Runtime.Serialization.InvalidDataContractException: Type 'Serilog.Events.ScalarValue' cannot be serialized. Consider marking it with the DataContractAttribute attribute, and marking all of its members you want serialized with the DataMemberAttribute attribute.  If the type is a collection, consider marking it with the CollectionDataContractAttribute.  See the Microsoft .NET Framework documentation for other supported types.
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.ThrowInvalidDataContractException(String message, Type type)
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.CreateDataContract(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.GetDataContractSkipValidation(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   at System.Runtime.Serialization.DataContractSerializer.get_RootContract()
+   at System.Runtime.Serialization.DataContractSerializer.InternalWriteStartObject(XmlWriterDelegator writer, Object graph)
+   at System.Runtime.Serialization.DataContractSerializer.InternalWriteObject(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObjectHandleExceptions(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObject(XmlDictionaryWriter writer, Object graph)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObject(Stream stream, Object graph)
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.Serialize(Object obj) in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 106
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.<>c.<EmitBatchAsync>b__10_4(KeyValuePair`2 x) in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 66
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector)
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.<EmitBatchAsync>d__10.MoveNext() in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 80
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.<OnTick>d__16.MoveNext()
+2018-06-23T09:24:41.8940544Z Unable to write log event to the database due to following error: Type 'Serilog.Events.ScalarValue' cannot be serialized. Consider marking it with the DataContractAttribute attribute, and marking all of its members you want serialized with the DataMemberAttribute attribute.  If the type is a collection, consider marking it with the CollectionDataContractAttribute.  See the Microsoft .NET Framework documentation for other supported types.
+2018-06-23T09:24:41.9100973Z Exception while emitting periodic batch from serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink: System.Runtime.Serialization.InvalidDataContractException: Type 'Serilog.Events.ScalarValue' cannot be serialized. Consider marking it with the DataContractAttribute attribute, and marking all of its members you want serialized with the DataMemberAttribute attribute.  If the type is a collection, consider marking it with the CollectionDataContractAttribute.  See the Microsoft .NET Framework documentation for other supported types.
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.ThrowInvalidDataContractException(String message, Type type)
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.CreateDataContract(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.GetDataContractSkipValidation(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   at System.Runtime.Serialization.DataContractSerializer.get_RootContract()
+   at System.Runtime.Serialization.DataContractSerializer.InternalWriteStartObject(XmlWriterDelegator writer, Object graph)
+   at System.Runtime.Serialization.DataContractSerializer.InternalWriteObject(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObjectHandleExceptions(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObject(XmlDictionaryWriter writer, Object graph)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObject(Stream stream, Object graph)
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.Serialize(Object obj) in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 106
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.<>c.<EmitBatchAsync>b__10_4(KeyValuePair`2 x) in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 66
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector)
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.<EmitBatchAsync>d__10.MoveNext() in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 80
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.<OnTick>d__16.MoveNext()
+2018-06-23T09:25:04.2474790Z Unable to write log event to the database due to following error: Type 'Serilog.Events.ScalarValue' cannot be serialized. Consider marking it with the DataContractAttribute attribute, and marking all of its members you want serialized with the DataMemberAttribute attribute.  If the type is a collection, consider marking it with the CollectionDataContractAttribute.  See the Microsoft .NET Framework documentation for other supported types.
+2018-06-23T09:25:04.2681307Z Exception while emitting periodic batch from serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink: System.Runtime.Serialization.InvalidDataContractException: Type 'Serilog.Events.ScalarValue' cannot be serialized. Consider marking it with the DataContractAttribute attribute, and marking all of its members you want serialized with the DataMemberAttribute attribute.  If the type is a collection, consider marking it with the CollectionDataContractAttribute.  See the Microsoft .NET Framework documentation for other supported types.
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.ThrowInvalidDataContractException(String message, Type type)
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.CreateDataContract(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   at System.Runtime.Serialization.DataContract.DataContractCriticalHelper.GetDataContractSkipValidation(Int32 id, RuntimeTypeHandle typeHandle, Type type)
+   at System.Runtime.Serialization.DataContractSerializer.get_RootContract()
+   at System.Runtime.Serialization.DataContractSerializer.InternalWriteStartObject(XmlWriterDelegator writer, Object graph)
+   at System.Runtime.Serialization.DataContractSerializer.InternalWriteObject(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObjectHandleExceptions(XmlWriterDelegator writer, Object graph, DataContractResolver dataContractResolver)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObject(XmlDictionaryWriter writer, Object graph)
+   at System.Runtime.Serialization.XmlObjectSerializer.WriteObject(Stream stream, Object graph)
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.Serialize(Object obj) in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 106
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.<>c.<EmitBatchAsync>b__10_4(KeyValuePair`2 x) in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 66
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector)
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.<EmitBatchAsync>d__10.MoveNext() in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 80
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.<OnTick>d__16.MoveNext()
