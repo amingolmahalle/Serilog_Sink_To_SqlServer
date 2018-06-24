@@ -62,7 +62,6 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
                         Ip = logEvent.Properties.TryGetValue(HttpRequestClientHostIPEnricher.HttpRequestClientHostIPPropertyName, out var ipOut) ? ipOut.ToString("l", null) : "",
                         Exception = logEvent.Exception?.ToString(),
                         MyProperties = properties.ToDictionary(x => x.Key, x => JsonConvert.SerializeObject(x.Value))
-                        , MyProperty = properties.ToDictionary(x => x.Key, x => Serialize(x.Value))
                        // ,MyProperty = properties.ToDictionary(x => x.Key, x => SerializeObject(x.Key,x.Value.ToString()))
                     };
                     
@@ -82,11 +81,11 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
         public static string SerializeObject( object o)
         {
             MemoryStream ms = new MemoryStream();
-            DataContractSerializer xs = new DataContractSerializer(o.GetType());
-           // XmlSerializer xs = new XmlSerializer(o.GetType());
+           // DataContractSerializer xs = new DataContractSerializer(o.GetType());
+            XmlSerializer xs = new XmlSerializer(o.GetType());
             XmlTextWriter xtw = new XmlTextWriter(ms, Encoding.UTF8);
-             xs.WriteObject(xtw, o);
-            xs.WriteObject(xtw, o);
+            // xs.WriteObject(xtw, o);
+            xs.Serialize(xtw, o);
             ms = (MemoryStream)xtw.BaseStream;
             return Utf8ByteArrayToString(ms.ToArray());
         }     

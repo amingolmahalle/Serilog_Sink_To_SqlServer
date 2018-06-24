@@ -27,6 +27,6 @@ namespace serlog_SqlServer.Entity
          public Dictionary<string, string> MyProperties { get; set; }
 
         [XmlAttribute]
-        public Dictionary<string, string> MyProperty { get; set; }
+        public string MyProperty { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace serlog_SqlServer.Controllers
 
             for (var i = 0; i < 10; i++)
             {
-                Serilog.Log.Logger.Information("Just a sample log. {Name:l}", "HelloHamed");
+                Serilog.Log.Logger.Information("Just a sample log. {Name:l}", "Amin");
             }
             return Ok("Sample log added to local SqlServer.");
         }

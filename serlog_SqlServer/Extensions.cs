@@ -28,6 +28,7 @@ namespace serlog_SqlServer
           .Enrich.WithExceptionDetails() //Install-Package Serilog.Exceptions 
           .Enrich.WithHttpRequestClientHostIP()
           .Enrich.WithUserName()
+          .Enrich.WithHttpRequestUrl()
           .Enrich.With(new ActionParametersEnricher());
 
             loggerConfiguration.WriteTo.Sink<MsSqlServerAuditSink>();
