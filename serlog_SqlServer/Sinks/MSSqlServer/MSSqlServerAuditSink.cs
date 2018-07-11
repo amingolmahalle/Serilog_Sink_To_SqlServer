@@ -64,7 +64,7 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
                         MyProperties = properties.ToDictionary(x => x.Key, x => JsonConvert.SerializeObject(x.Value))
                        // ,MyProperty = properties.ToDictionary(x => x.Key, x => SerializeObject(x.Key,x.Value.ToString()))
                     };
-                    
+                    //$ is --> String Interpolation
                     _sqlbuffer.AddQuery( $@"
                                          INSERT INTO Logs_Tbl (id, applicationName, creationdate, exception,[ip], [level], [message], username,Properties)
                                          VALUES ('{log.Id}','{log.ApplicationName}','{log.CreationDate}','{log.Exception}','{log.Ip}',{log.Level.GetHashCode()},
