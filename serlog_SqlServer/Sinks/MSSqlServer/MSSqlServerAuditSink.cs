@@ -64,6 +64,7 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
                         MyProperties = properties.ToDictionary(x => x.Key, x => JsonConvert.SerializeObject(x.Value))
                        // ,MyProperty = properties.ToDictionary(x => x.Key, x => SerializeObject(x.Key,x.Value.ToString()))
                     };
+
                     //$ is --> String Interpolation
                     _sqlbuffer.AddQuery( $@"
                                          INSERT INTO Logs_Tbl (id, applicationName, creationdate, exception,[ip], [level], [message], username,Properties)
@@ -105,18 +106,6 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
                 memoryStream.Position = 0;
                 return reader.ReadToEnd();
             }
-        }
-
-        // https://stackoverflow.com/questions/2658916/serializing-a-list-of-key-value-pairs-to-xml
-        [Serializable]
-        [XmlType(TypeName = "WhateverNameYouLike")]
-        public struct KeyValuePair<TK, TV>
-        {
-            public TK Key
-            { get; set; }
-
-            public TV Value
-            { get; set; }
         }
 
     }
