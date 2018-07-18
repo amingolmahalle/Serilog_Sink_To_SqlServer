@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using serlog_SqlServer.Extentions;
+using Serilog;
 namespace serlog_SqlServer
 {
     public class LoggerConfig

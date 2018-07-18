@@ -1,6 +1,6 @@
 ﻿using System.Web.Http.ExceptionHandling;
 
-namespace serlog_SqlServer
+namespace serlog_SqlServer.OtherClasses
 {
     public class ExceptionLogger : System.Web.Http.ExceptionHandling.ExceptionLogger
     {

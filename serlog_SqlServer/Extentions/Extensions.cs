@@ -3,12 +3,15 @@ using System.IO;
 using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
+using serlog_SqlServer.Filters;
+using serlog_SqlServer.OtherClasses;
 using serlog_SqlServer.Sinks.MSSqlServer;
 using Serilog;
 using Serilog.Exceptions;
 using SerilogWeb.Classic;
+using ExceptionLogger = serlog_SqlServer.OtherClasses.ExceptionLogger;
 
-namespace serlog_SqlServer
+namespace serlog_SqlServer.Extentions
 {
     public static class Extensions
     {
@@ -22,7 +25,7 @@ namespace serlog_SqlServer
                 var path = $@"{appDataPath}\SerilogInternals-{DateTime.Now:yyyy-MM-dd}.txt";
                 File.AppendAllText(path, msg + Environment.NewLine);
             });
-            SerilogWebClassic.Configure(config => config.Disable());////Install-Package SerilogWeb.Classic
+            SerilogWebClassic.Configure(config => config.Disable());//Install-Package SerilogWeb.Classic
 
             loggerConfiguration
           .Enrich.WithExceptionDetails() //Install-Package Serilog.Exceptions 

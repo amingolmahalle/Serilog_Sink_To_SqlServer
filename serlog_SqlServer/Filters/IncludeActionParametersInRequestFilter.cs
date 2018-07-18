@@ -2,7 +2,7 @@
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
-namespace serlog_SqlServer
+namespace serlog_SqlServer.Filters
 {
     public class IncludeActionParametersInRequestFilter : ActionFilterAttribute
     {

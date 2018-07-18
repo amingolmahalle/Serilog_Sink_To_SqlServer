@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace serlog_SqlServer.Exception
+namespace serlog_SqlServer.Exceptions
 {
 
     [Serializable]

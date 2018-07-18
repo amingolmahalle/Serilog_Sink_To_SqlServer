@@ -10,7 +10,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 using serlog_SqlServer.Entity;
-using serlog_SqlServer.Exception;
+using serlog_SqlServer.Exceptions;
 using Serilog.Debugging;
 using Serilog.Events;
 using Serilog.Sinks.PeriodicBatching;
@@ -73,7 +73,7 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
                 }
                 await _sqlbuffer.WriteBufferToDb();
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 SelfLog.WriteLine($"Unable to write log event to the database due to following error: {ex.Message}");
                 throw;

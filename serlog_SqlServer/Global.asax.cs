@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Http;
+using serlog_SqlServer.Extentions;
 
 namespace serlog_SqlServer
 {

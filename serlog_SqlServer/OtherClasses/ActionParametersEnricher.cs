@@ -2,7 +2,7 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace serlog_SqlServer
+namespace serlog_SqlServer.OtherClasses
 {
     public class ActionParametersEnricher : ILogEventEnricher
     {
