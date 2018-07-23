@@ -1,7 +1,10 @@
 ﻿using System.Web.Http.ExceptionHandling;
 
-namespace serlog_SqlServer.OtherClasses
+namespace serlog_SqlServer.Filters
 {
+    /// <summary>
+    /// Asp.Net WebApi
+    /// </summary>
     public class ExceptionLogger : System.Web.Http.ExceptionHandling.ExceptionLogger
     {
         public override void Log(ExceptionLoggerContext context)

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Xml.Serialization;
 using Serilog.Events;
 
 namespace serlog_SqlServer.Entity
@@ -23,10 +21,7 @@ namespace serlog_SqlServer.Entity
 
         public string Exception { get; set; }
 
-        //  [XmlAttribute]       
-         public Dictionary<string, string> MyProperties { get; set; }
+         public string MyProperties { get; set; }
 
-        [XmlAttribute]
-        public string MyProperty { get; set; }
     }
 }

@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web.Configuration;
-using System.Xml;
-using System.Xml.Serialization;
 using Newtonsoft.Json;
 using serlog_SqlServer.Entity;
 using serlog_SqlServer.Exceptions;
@@ -22,8 +17,8 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
     {
         #region Field
 
-        readonly SqlBuffer _sqlbuffer=new SqlBuffer();
-       
+        readonly SqlBuffer _sqlbuffer = new SqlBuffer();
+
         private const int DefaultBatchPostingLimit = 50;
 
         private static readonly TimeSpan DefaultPeriod = TimeSpan.FromSeconds(5);
@@ -38,19 +33,19 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
             if (string.IsNullOrWhiteSpace(ApplicationName))
                 throw new ApplicationNameNotProvidedException();
 
-            AddiotionalColumnNames = new[]{UserNameEnricher.UserNamePropertyName,HttpRequestClientHostIPEnricher.HttpRequestClientHostIPPropertyName};
+            AddiotionalColumnNames = new[] { UserNameEnricher.UserNamePropertyName, HttpRequestClientHostIPEnricher.HttpRequestClientHostIPPropertyName };
         }
-        
+
         protected override async Task EmitBatchAsync(IEnumerable<LogEvent> events)
         {
-           
+
             try
             {
                 foreach (var logEvent in events)
                 {
 
                     var properties = logEvent.Properties.Where(x => !AddiotionalColumnNames.Contains(x.Key)).ToList();
-
+                    string jsonPro = JsonConvert.SerializeObject(properties);
                     var log = new Log
                     {
                         Id = Guid.NewGuid(),
@@ -61,12 +56,11 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
                         ApplicationName = ApplicationName,
                         Ip = logEvent.Properties.TryGetValue(HttpRequestClientHostIPEnricher.HttpRequestClientHostIPPropertyName, out var ipOut) ? ipOut.ToString("l", null) : "",
                         Exception = logEvent.Exception?.ToString(),
-                        MyProperties = properties.ToDictionary(x => x.Key, x => JsonConvert.SerializeObject(x.Value))
-                       // ,MyProperty = properties.ToDictionary(x => x.Key, x => SerializeObject(x.Key,x.Value.ToString()))
+                        MyProperties = jsonPro
                     };
 
                     //$ is --> String Interpolation
-                    _sqlbuffer.AddQuery( $@"
+                    _sqlbuffer.AddQuery($@"
                                          INSERT INTO Logs_Tbl (id, applicationName, creationdate, exception,[ip], [level], [message], username,Properties)
                                          VALUES ('{log.Id}','{log.ApplicationName}','{log.CreationDate}','{log.Exception}','{log.Ip}',{log.Level.GetHashCode()},
                                          '{log.Message}', '{log.UserName}','{log.MyProperties}')");
@@ -77,34 +71,6 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
             {
                 SelfLog.WriteLine($"Unable to write log event to the database due to following error: {ex.Message}");
                 throw;
-            }
-        }
-        public static string SerializeObject( object o)
-        {
-            MemoryStream ms = new MemoryStream();
-           // DataContractSerializer xs = new DataContractSerializer(o.GetType());
-            XmlSerializer xs = new XmlSerializer(o.GetType());
-            XmlTextWriter xtw = new XmlTextWriter(ms, Encoding.UTF8);
-            // xs.WriteObject(xtw, o);
-            xs.Serialize(xtw, o);
-            ms = (MemoryStream)xtw.BaseStream;
-            return Utf8ByteArrayToString(ms.ToArray());
-        }     
-        public static String Utf8ByteArrayToString(Byte[] characters)
-        {
-            UTF8Encoding encoding = new UTF8Encoding();
-            String constructedString = encoding.GetString(characters);
-            return (constructedString);
-        }
-        public static string Serialize(object obj)
-        {
-            using (MemoryStream memoryStream = new MemoryStream())
-            using (StreamReader reader = new StreamReader(memoryStream))
-            {
-                DataContractSerializer serializer = new DataContractSerializer(obj.GetType());
-                serializer.WriteObject(memoryStream, obj);
-                memoryStream.Position = 0;
-                return reader.ReadToEnd();
             }
         }
 

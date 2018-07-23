@@ -4,6 +4,9 @@ using System.Web.Http.Filters;
 
 namespace serlog_SqlServer.Filters
 {
+    /// <summary>
+    /// Asp.Net WebApi
+    /// </summary>
     public class IncludeActionParametersInRequestFilter : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)

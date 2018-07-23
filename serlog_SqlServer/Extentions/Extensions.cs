@@ -3,13 +3,13 @@ using System.IO;
 using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
+using System.Web.Mvc;
 using serlog_SqlServer.Filters;
 using serlog_SqlServer.OtherClasses;
 using serlog_SqlServer.Sinks.MSSqlServer;
 using Serilog;
 using Serilog.Exceptions;
 using SerilogWeb.Classic;
-using ExceptionLogger = serlog_SqlServer.OtherClasses.ExceptionLogger;
 
 namespace serlog_SqlServer.Extentions
 {
@@ -40,11 +40,13 @@ namespace serlog_SqlServer.Extentions
         }
 
         public static void UseExceptionLoggerImpl(this HttpConfiguration configuration, bool includeActionParameters = true)
-        {
-            configuration.Services.Replace(typeof(IExceptionLogger), new ExceptionLogger());
+        {   
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters); //Apply Filters In Asp.Net MVC
+
+            configuration.Services.Replace(typeof(IExceptionLogger), new Filters.ExceptionLogger()); //Apply ExceptionLogger Filter In Asp.Net WebApi
 
             if (includeActionParameters)
-                configuration.Filters.Add(new IncludeActionParametersInRequestFilter());
+                configuration.Filters.Add(new IncludeActionParametersInRequestFilter());//Apply IncludeActionParametersInRequest Filter In Asp.Net WebApi
         }
     }
 }

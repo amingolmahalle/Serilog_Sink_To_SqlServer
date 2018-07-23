@@ -18,6 +18,7 @@ namespace serlog_SqlServer
 
             LoggerConfig.Config();
             GlobalConfiguration.Configuration.UseExceptionLoggerImpl();
+            
         }
     }
 }
