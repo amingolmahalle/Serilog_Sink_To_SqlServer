@@ -3,7 +3,6 @@ using serlog_SqlServer.Filters;
 
 namespace serlog_SqlServer
 {
-
     /// <summary>
     /// Asp.Net MVC
     /// </summary>
@@ -11,6 +10,8 @@ namespace serlog_SqlServer
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            filters.Add(new HandleErrorAttribute());
+             
             filters.Add(new ExceptionHandlerAttribute());
 
             filters.Add(new IncludeActionParametersInRequestFilterMvc());
