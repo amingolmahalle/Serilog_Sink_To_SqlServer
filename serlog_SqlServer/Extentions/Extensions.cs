@@ -4,12 +4,12 @@ using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Mvc;
+using serlog_SqlServer.Enrichers;
 using serlog_SqlServer.Filters;
-using serlog_SqlServer.OtherClasses;
 using serlog_SqlServer.Sinks.MSSqlServer;
 using Serilog;
-using Serilog.Exceptions;
 using SerilogWeb.Classic;
+using Serilog.Exceptions;
 
 namespace serlog_SqlServer.Extentions
 {
@@ -46,7 +46,7 @@ namespace serlog_SqlServer.Extentions
             configuration.Services.Replace(typeof(IExceptionLogger), new Filters.ExceptionLogger()); //Apply ExceptionLogger Filter In Asp.Net WebApi
 
             if (includeActionParameters)
-                configuration.Filters.Add(new IncludeActionParametersInRequestFilter());//Apply IncludeActionParametersInRequest Filter In Asp.Net WebApi
+                configuration.Filters.Add(new IncludeActionParametersInRequestFilter()); //Apply IncludeActionParametersInRequest Filter In Asp.Net WebApi
         }
     }
 }

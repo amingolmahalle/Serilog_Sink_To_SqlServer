@@ -1,0 +1,31 @@
+2018-07-24T09:33:39.7632875Z Unable to write log event to the database due to following error: Incorrect syntax near 'ii'.
+2018-07-24T09:33:39.7953709Z Exception while emitting periodic batch from serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink: System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'ii'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, String endMethod, Boolean isInternal)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at System.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at serlog_SqlServer.Sinks.MSSqlServer.SqlBuffer.<ExecuteNonQueryAsync>d__8.MoveNext() in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\SqlBuffer.cs:line 66
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at serlog_SqlServer.Sinks.MSSqlServer.SqlBuffer.<WriteBufferToDb>d__7.MoveNext() in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\SqlBuffer.cs:line 49
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at serlog_SqlServer.Sinks.MSSqlServer.MsSqlServerAuditSink.<EmitBatchAsync>d__10.MoveNext() in C:\Users\GolmahalehA\Source\Repos\serlog_SqlServer\serlog_SqlServer\Sinks\MSSqlServer\MSSqlServerAuditSink.cs:line 73
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.<OnTick>d__16.MoveNext()
+ClientConnectionId:ebf0ba24-7e77-4592-ab6b-2c2e78d2eefb
+Error Number:102,State:1,Class:15
