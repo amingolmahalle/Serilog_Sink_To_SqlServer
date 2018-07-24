@@ -14,10 +14,10 @@ namespace serlog_SqlServer.Filters
 
             var actionParameters = filterContext.RouteData.Values.ContainsKey("ActionParameters")
                 ? filterContext.RequestContext.RouteData.Values["ActionParameters"]
-                : "";// filterContext.RouteData.Values.Add("test", "TESTING");
+                : ""; // filterContext.RouteData.Values.Add("test", "TESTING");
 
             Serilog.Log
-                .ForContext("RequestedUrl", filterContext.HttpContext.Request.Url?.AbsoluteUri)// filterContext.RequestContext.HttpContext.Request.RawUrl
+                .ForContext("RequestedUrl", filterContext.HttpContext.Request.Url?.AbsoluteUri) // filterContext.RequestContext.HttpContext.Request.RawUrl
                 .ForContext("ActionParameters", actionParameters)
                 .Fatal(
                     filterContext.Exception,
