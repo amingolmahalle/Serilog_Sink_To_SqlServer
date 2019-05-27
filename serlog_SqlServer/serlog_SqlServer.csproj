@@ -136,11 +136,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\ExceptionHandlerAttribute.cs" />
     <Compile Include="Filters\IncludeActionParametersInRequestFilterMvc.cs" />
-    <Compile Include="Enrichers\ActionParametersEnricher.cs" />
+    <Compile Include="Entity\Enrichers\ActionParametersEnricher.cs" />
     <Compile Include="App_Start\LoggerConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\WebApiController.cs" />
     <Compile Include="Entity\Log.cs" />
     <Compile Include="Filters\ExceptionLogger.cs" />
     <Compile Include="Exceptions\LogExceptions.cs" />

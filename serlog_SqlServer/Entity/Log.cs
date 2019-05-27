@@ -22,6 +22,5 @@ namespace serlog_SqlServer.Entity
         public string Exception { get; set; }
 
          public string MyProperties { get; set; }
-
     }
 }

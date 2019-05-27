@@ -15,8 +15,6 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
 {
     public class MsSqlServerAuditSink : PeriodicBatchingSink
     {
-        #region Field
-
         readonly SqlBuffer _sqlbuffer = new SqlBuffer();
 
         private const int DefaultBatchPostingLimit = 50;
@@ -24,8 +22,9 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
         private static readonly TimeSpan DefaultPeriod = TimeSpan.FromSeconds(5);
 
         private string ApplicationName { get; }
+
         private string[] AddiotionalColumnNames { get; }
-        #endregion
+
         public MsSqlServerAuditSink() : base(DefaultBatchPostingLimit, DefaultPeriod)
         {
             ApplicationName = WebConfigurationManager.AppSettings["Log:ApplicationName"];
@@ -38,7 +37,6 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
 
         protected override async Task EmitBatchAsync(IEnumerable<LogEvent> events)
         {
-
             try
             {
                 foreach (var logEvent in events)
@@ -61,8 +59,7 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
 
                     //$ is --> String Interpolation
                     _sqlbuffer.AddQuery($@"
-                                         INSERT INTO Logs_Tbl (id, applicationName, creationdate, exception,[ip], [level], [message], username,Properties)
-                                         VALUES ('{log.Id}','{log.ApplicationName}','{log.CreationDate}','{log.Exception}','{log.Ip}',{log.Level.GetHashCode()},
+                                         INSERT INTO Logs_Tbl (id, applicationName, creationdate,                 exception,[ip], [level], [message],                    username,Properties) VALUES ('{log.Id}','{log.ApplicationName}','{log.CreationDate}','{log.Exception}','{log.Ip}',{log.Level.GetHashCode()},
                                          '{log.Message}', '{log.UserName}','{log.MyProperties}')");
                 }
                 await _sqlbuffer.WriteBufferToDb();

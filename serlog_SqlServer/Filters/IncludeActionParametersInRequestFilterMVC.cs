@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace serlog_SqlServer.Filters
 {
@@ -10,7 +12,10 @@ namespace serlog_SqlServer.Filters
         public override void OnActionExecuting(ActionExecutingContext actionContext)
         {
             // HttpContext.Current.Items.Add("ActionParameters", actionContext.ActionParameters);
-            actionContext.RequestContext.RouteData.Values.Add("ActionParameters", actionContext.ActionParameters);
+            var actionParametersLazy =
+                new Lazy<string>(() => JsonConvert.SerializeObject(actionContext.ActionParameters));
+
+            actionContext.RequestContext.RouteData.Values.Add("ActionParameters", actionParametersLazy);
         }
     }
 }

@@ -7,30 +7,18 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
 {
     public class SqlBuffer
     {
-        #region fields
-        StringBuilder _sb = new StringBuilder();
-        private readonly SqlConnection _conn = new SqlConnection();
-        private int _commandCount;
-        #endregion
+        private StringBuilder _sb = new StringBuilder();
 
-        #region Proeprty
+        private readonly SqlConnection _conn = new SqlConnection();
+
+        private int _commandCount;
 
         public int CommandCount => _commandCount;
-       
-        #endregion
 
-        #region Functionality
         public void AddQuery(string query)
         {
-            try
-            {
-                _sb.Append(query);
-                _commandCount++;
-            }
-            catch
-            {
-                // ignored
-            }
+            _sb.Append(query);
+            _commandCount++;
         }
         private void Clear()
         {
@@ -44,7 +32,7 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
         }
         public async Task<int> WriteBufferToDb()
         {
-           Task<int> k = ExecuteNonQueryAsync(_sb.ToString());
+            Task<int> k = ExecuteNonQueryAsync(_sb.ToString());
             Clear();
             return await k;
         }
@@ -53,6 +41,7 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
             if (string.IsNullOrEmpty(queryStr))
                 return 0; //Task.FromResult(0);
             _conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+
             try
             {
                 _conn.Open();
@@ -74,6 +63,5 @@ namespace serlog_SqlServer.Sinks.MSSqlServer
         {
             return _sb.ToString();
         }
-        #endregion
     }
 }
